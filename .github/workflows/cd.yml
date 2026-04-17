@@ -5,11 +5,13 @@ on:
     workflows: ["CI"]
     types:
       - completed
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: checkout
